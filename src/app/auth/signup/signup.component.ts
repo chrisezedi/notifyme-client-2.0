@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
 
   signup(){
     this.authService.signup(this.signupForm.value).subscribe((response)=>{
-      response.success && this.sharedService.showSnackbar("A verification link has been sent to your email")
+      response.success && this.sharedService.showSnackbar("A verification link has been sent to your email address")
     },(error)=>{
       if(error.status == 500) {
         this.sharedService.showSnackbar("Something went wrong")
