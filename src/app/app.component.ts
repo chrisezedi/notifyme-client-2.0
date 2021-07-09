@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Subject } from 'rxjs';
+import { LoaderService } from './shared/loader.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'notifyme-client-v2';
+  title = 'notifyme';
+  isLoading: Subject<boolean> = this.loaderService.isLoading;
+
+  constructor(private loaderService:LoaderService){}
 }

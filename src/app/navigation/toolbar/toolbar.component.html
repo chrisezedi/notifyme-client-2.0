@@ -1,0 +1,30 @@
+<header>
+    <div id="menuContainer">
+        <img src="../../../assets/images/notifyme-icon.png" alt="notifymeicon">
+        <div id="menuListContainer">
+            <div *ngIf="isAuth else notAuth" id="menu">
+                <button mat-icon-button routerLink="/home">
+                    <mat-icon class="m-icon">home</mat-icon>
+                </button>
+    
+                <button mat-icon-button routerLink="/home/explore">
+                    <mat-icon class="m-icon">explore</mat-icon>
+                </button>
+    
+                <button mat-icon-button routerLink="/home/notifications">
+                    <mat-icon class="m-icon">notifications</mat-icon>
+                </button>
+
+                <button mat-icon-button (click)="onToggleSidebar()">
+                    <mat-icon class="m-icon">menu</mat-icon>
+                </button>
+            </div>
+
+            <ng-template #notAuth>
+                <button mat-icon-button (click)="onToggleSidebar()">
+                    <mat-icon class="m-icon">menu</mat-icon>
+                </button>
+            </ng-template>
+        </div>
+    </div>
+</header>

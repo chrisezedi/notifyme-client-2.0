@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+  - "14"
+
+services:
+  - docker
+
+branches:
+  only:
+    - main
+cache:
+    directories:
+      - "node_modules"
+
+script: bash ./scripts/docker.sh
+
+deploy:
+  provider: script
+  script: bash ./scripts/deploy.sh
+  on:
+    branch: main
+
+notification:
+  email:  false

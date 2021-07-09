@@ -1,0 +1,31 @@
+#signup{
+    display: flex;
+    justify-content: center;
+}
+
+mat-card{
+    width: 400px;
+    margin: auto;
+}
+
+mat-card-header{
+    display: flex;
+    justify-content: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    #fields{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        mat-form-field{
+            width: 100%;
+        }
+    }
+}
