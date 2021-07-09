@@ -14,7 +14,7 @@ WORKDIR /usr/share/nginx/html
 
 RUN rm -rf ./*
 
-COPY --from=builder /app/dist/notifyme-client/ .
+COPY --from=builder /app/dist/notifyme-client-v2/ .
 
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 

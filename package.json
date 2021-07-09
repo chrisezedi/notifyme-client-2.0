@@ -1,5 +1,5 @@
 {
-  "name": "notifyme-client-v2",
+  "name": "notifyme-client",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
