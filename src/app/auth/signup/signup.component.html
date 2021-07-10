@@ -1,0 +1,59 @@
+<section id="signup">
+    <mat-card>
+        <mat-card-header>
+            <small
+              >Already registered? &nbsp;<a
+                routerLink="/auth"
+                mat-stroked-button
+                color="primary"
+                >sign in!</a
+              >
+            </small>
+          </mat-card-header>
+          
+          <mat-card-content>
+              <form [formGroup]="signupForm" (ngSubmit)="signup()">
+                <div id="fields">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Enter Your Firstname</mat-label>
+                            <input type="text" matInput formControlName="firstname">
+                            <mat-hint>john</mat-hint>
+                            <mat-error *ngIf="signUpFormControls.firstname.errors?.required">Firstname is required!</mat-error>
+                    </mat-form-field>
+    
+                    <mat-form-field appearance="outline">
+                        <mat-label>Enter Your Lastname</mat-label>
+                            <input type="text" matInput formControlName="lastname">
+                            <mat-hint>doe</mat-hint>
+                            <mat-error *ngIf="signUpFormControls.lastname.errors?.required">Lastname is required!</mat-error>
+                    </mat-form-field>
+    
+                    <mat-form-field appearance="outline">
+                        <mat-label>Enter Your Email</mat-label>
+                            <input type="text" matInput formControlName="email">
+                            <mat-hint>johndoe@gmail.com</mat-hint>
+                            <mat-error *ngIf="signUpFormControls.email.errors?.required">Email is required!</mat-error>
+                            <mat-error *ngIf="signUpFormControls.email.errors?.email">You must enter a valid email!</mat-error>
+                    </mat-form-field>
+    
+                    <mat-form-field appearance="outline">
+                        <mat-label>What do you do ?</mat-label>
+                            <input type="text" matInput formControlName="occupation">
+                            <mat-hint>Devops Engineer</mat-hint>
+                            <mat-error *ngIf="signUpFormControls.occupation.errors?.required">occupation is required!</mat-error>
+                    </mat-form-field>
+    
+                    <mat-form-field appearance="outline">
+                        <mat-label>Enter Your Password</mat-label>
+                            <input type="password" matInput formControlName="password">
+                            <mat-hint>minimum of 6 characters</mat-hint>
+                            <mat-error *ngIf="signUpFormControls.password.errors?.required">Password is required!</mat-error>
+                            <mat-error *ngIf="signUpFormControls.email.errors?.minlength">Password must be at least 6 characters!</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <button mat-raised-button color="primary" [disabled]="signupForm.touched && signupForm.invalid" type="submit">Signup</button>
+              </form>
+          </mat-card-content>
+    </mat-card>
+</section>

@@ -1,0 +1,18 @@
+<mat-sidenav-container style="height: 100%;">
+    <mat-sidenav #sidenav>
+        <app-sidebar (closeSidebar)="sidenav.close()"></app-sidebar>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <app-toolbar (sidebarToggle)="sidenav.toggle()"></app-toolbar>
+        <mat-progress-bar *ngIf="isLoading | async" mode="indeterminate"></mat-progress-bar>
+        <div>
+            <div id="app">
+                <div id="app-container">
+                    <router-outlet ></router-outlet>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+

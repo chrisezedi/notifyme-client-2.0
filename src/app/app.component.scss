@@ -1,0 +1,25 @@
+#app{
+    display: flex;
+    justify-content: center;
+    padding: 20px 10px;
+
+    #app-container{
+        width: 50%;
+    }
+}
+
+mat-sidenav{
+    width: 20%;
+}
+
+@media (max-width: 600px){
+    #app{        
+        #app-container{
+            width: 100%;
+        }
+    }
+
+    mat-sidenav{
+        width: 55%;
+    }
+}
