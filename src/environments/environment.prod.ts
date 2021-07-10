@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl:"http://notifyme-api.herokuapp.com"
+  apiUrl:"https://notifyme-api.herokuapp.com"
 };
