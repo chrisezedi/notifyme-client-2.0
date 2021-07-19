@@ -32,6 +32,7 @@ export class SignupComponent implements OnInit {
       if(error.status == 500) {
         this.sharedService.showSnackbar("something went wrong")
       }else{
+        console.log(error)
         this.sharedService.showSnackbar(error.error.msg)
       }
     })
