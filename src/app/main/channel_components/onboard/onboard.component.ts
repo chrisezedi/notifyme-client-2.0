@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { MainService } from '../../main.service';
 
 @Component({
   selector: 'app-onboard',
@@ -7,13 +8,14 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OnboardComponent implements OnInit {
-
-  constructor() { }
+  categories:string[] = [];
+  constructor(private mainService:MainService) { }
 
   ngOnInit(): void {
-    // this.MainService.getCategories().subscribe((response)=>{
-    //   this.categories = response;
-    // }); 
+    this.mainService.getCategories().subscribe((response)=>{
+      console.log(response)
+      // this.categories = response;
+    }); 
   }
 
 }

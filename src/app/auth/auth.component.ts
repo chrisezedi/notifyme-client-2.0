@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { SharedService } from '../shared/shared.service';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -15,20 +16,21 @@ export class AuthComponent implements OnInit {
     password: new FormControl('',[Validators.required,Validators.required])
   })
   
-  constructor(private authService:AuthService, private router:Router) { 
-  }
+  constructor(private authService:AuthService, private router:Router, private sharedService:SharedService) { }
 
   ngOnInit(): void {
-    this.authService.checkAuth().subscribe((response) => {
-      if(response.success){
-        console.log(response.token)
-         this.authService.storeToken(response.token) && this.router.navigate(['/']);
-      }
-    })
+    
   }
 
-  signIn(){
-
+  logIn(){
+    this.authService.login(this.signInForm.value).subscribe((response)=>{
+      response.success && this.router.navigate(["/onboard"]);
+    }, error => {
+      if(error.isVerified = false){
+        this.sharedService.showSnackbar("You need to verifiy your account!");
+        this.router.navigate(["/auth/verifyaccount/account_not_verified"]);
+      }else{this.sharedService.showSnackbar(error.error)}
+    })
   }
 
   get signInFormControls() { return this.signInForm.controls }

@@ -19,13 +19,9 @@ export class AuthService {
   }
 
   constructor(private http:HttpClient) { }
-  //check if user is logged in
-  isAuth():boolean{
-    return this.token ? true : false;
-  }
   
   checkAuth():Observable<any>{
-    return this.http.get(`${this.apiUrl}/users/access_token`,this.httpOptions);
+    return this.http.get(`${this.apiUrl}/users/access_token`,this.httpOptions)
   }
 
   //log in user
@@ -47,5 +43,10 @@ export class AuthService {
   //resend verification link
   resendVerificationLink(email:string):Observable<any>{
     return this.http.post(`${this.apiUrl}/users/resend_verification_link`,{email},this.httpOptions);
+  }
+
+  //login user
+  login(user:{email:string,password:string}):Observable<any>{
+    return this.http.post(`${this.apiUrl}/users/login`,user,this.httpOptions);
   }
 }
