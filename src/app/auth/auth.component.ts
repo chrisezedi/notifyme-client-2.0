@@ -26,7 +26,7 @@ export class AuthComponent implements OnInit {
     this.authService.login(this.signInForm.value).subscribe((response)=>{
       response.success && this.router.navigate(["/onboard"]);
     }, error => {
-      if(error.isVerified = false){
+      if(error.isVerified == false){
         this.sharedService.showSnackbar("You need to verifiy your account!");
         this.router.navigate(["/auth/verifyaccount/account_not_verified"]);
       }else{this.sharedService.showSnackbar(error.error)}
