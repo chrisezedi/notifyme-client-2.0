@@ -1,7 +1,7 @@
 <section id="verify">
     <mat-card *ngIf="jwtError">
         <mat-card-header>
-            <small> Enter the email address you registered with to recieve a verification link</small>
+            <small style="text-align: center;"> Enter the email address you registered with to recieve a verification link</small>
         </mat-card-header>
         <mat-card-content>
             <form [formGroup]="resendVlinkForm" (ngSubmit)="resendVlink()">

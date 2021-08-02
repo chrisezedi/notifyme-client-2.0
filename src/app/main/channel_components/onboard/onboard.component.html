@@ -1,1 +1,9 @@
-<p>onboard works!</p>
+<section id="onboard">
+    <h1 style="text-align: center;">What are your interests?</h1>
+      <div id="categories">
+        <button *ngFor="let category of categories" [ngClass]="category.isSelected ? 'clickedColor' : ''" (click)="onSelectCatToggle(category)"  mat-stroked-button color="primary" style="margin: 5px 10px;">{{category?.name |uppercase}}</button>
+      </div>
+    <div fxLayoutAlign="end">
+      <button id="nextBtn" mat-fab (click)="loadChannels()"><mat-icon>arrow_right_alt</mat-icon></button>
+    </div>
+  </section>

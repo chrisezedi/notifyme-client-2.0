@@ -1,45 +1,40 @@
-<aside>
+<aside class="shadow-sm" [ngClass]="darkModeStyle ? 'dark-mode' : 'light-mode' ">
     <mat-list *ngIf="isAuth else notAuth">
         <mat-list-item>
-            <div id="close">
-                <h1 (click)="onCloseSidebar()">X</h1>
-            </div>
-        </mat-list-item>
-        <mat-list-item>
             <mat-icon class="m-icon" matListIcon>local_activity</mat-icon>
-            <a matLine routerLink="home/my-channels" (click)="onCloseSidebar()">My channels</a>
+            <a matLine [ngStyle]="darkModeStyle ? {'color':'#fff'} : {'color':'black'}" routerLink="home/my-channels" (click)="onCloseSidebar()">My channels</a>
         </mat-list-item>
 
         <mat-list-item>
             <mat-icon class="m-icon" matListIcon>subscriptions</mat-icon>
-            <a matline routerLink="home/my-subscriptions" (click)="onCloseSidebar()">Subscriptions</a>
+            <a matline [ngStyle]="darkModeStyle ? {'color':'#fff'} : {'color':'black'}" routerLink="home/my-subscriptions" (click)="onCloseSidebar()">Subscriptions</a>
         </mat-list-item>
 
         <mat-list-item>
             <mat-icon class="m-icon" matListIcon>perm_identity</mat-icon>
-            <a matLine routerLink="home/profile" (click)="onCloseSidebar()">Profile</a>
+            <a matLine [ngStyle]="darkModeStyle ? {'color':'#fff'} : {'color':'black'}" routerLink="home/profile" (click)="onCloseSidebar()">Profile</a>
         </mat-list-item>
 
         <mat-list-item>
             <mat-icon class="m-icon" matListIcon>eject</mat-icon>
-            <a matLine (click)="onLogout()" style="cursor: pointer;">Logout</a> 
+            <a matLine [ngStyle]="darkModeStyle ? {'color':'#fff'} : {'color':'black'}" (click)="onLogout()" style="cursor: pointer;">Logout</a> 
         </mat-list-item>
 
-        <!-- <mat-list-item>
-            <mat-slide-toggle [checked]='themeMode' (click)="onDarkModeToggle()" (click)="onCloseSidebar()" color="primary">Dark Mode</mat-slide-toggle>
-        </mat-list-item> -->
+        <mat-list-item>
+            <mat-slide-toggle [checked]="isDarkMode" (click)="onDarkModeToggle()" color="primary">Dark Mode</mat-slide-toggle>
+        </mat-list-item>
         </mat-list>
 
         <ng-template #notAuth>
             <mat-list>
                 <mat-list-item>
                     <mat-icon class="m-icon" matListIcon>door_front</mat-icon>
-                    <a matLine routerLink="/auth/signup" (click)="onCloseSidebar()" style="cursor: pointer;">Signup</a> 
+                    <a matLine [ngStyle]="darkModeStyle ? {'color':'#fff'} : {'color':'black'}" routerLink="/auth/signup" (click)="onCloseSidebar()" style="cursor: pointer;">Signup</a> 
                 </mat-list-item>
                 
                 <mat-list-item>
                     <mat-icon class="m-icon" matListIcon>login</mat-icon>
-                    <a matLine routerLink="/auth" (click)="onCloseSidebar()" style="cursor: pointer;">Signin</a> 
+                    <a matLine [ngStyle]="darkModeStyle ? {'color':'#fff'} : {'color':'black'}" routerLink="/auth" (click)="onCloseSidebar()" style="cursor: pointer;">Signin</a> 
                 </mat-list-item>
             </mat-list>
         </ng-template>

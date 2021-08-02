@@ -1,4 +1,14 @@
+#verify{
+    display: flex;
+    justify-content: center;
+}
+
 form{
     display: flex;
     flex-direction: column;
+}
+
+mat-card{
+    width: 400px;
+    margin: auto;
 }

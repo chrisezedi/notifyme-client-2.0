@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
-
+  visibility:boolean = false;
   signInForm = new FormGroup({
     email: new FormControl('',[Validators.required,Validators.email]),
     password: new FormControl('',[Validators.required,Validators.required])
@@ -24,15 +24,25 @@ export class AuthComponent implements OnInit {
 
   logIn(){
     this.authService.login(this.signInForm.value).subscribe((response)=>{
-      response.success && this.router.navigate(["/onboard"]);
-    }, error => {
-      if(error.isVerified == false){
-        this.sharedService.showSnackbar("You need to verifiy your account!");
+      if(response.success){
+        this.authService.storeToken(response.token);
+        this.router.navigate(["/"]);
+      }
+    }, (response) => {
+      if(response.error.isverified == false){
         this.router.navigate(["/auth/verifyaccount/account_not_verified"]);
-      }else{this.sharedService.showSnackbar(error.error)}
+        this.sharedService.showSnackbar("You need to verifiy your account!");
+      }else{
+        this.sharedService.showSnackbar(response.error)
+      }
     })
   }
 
   get signInFormControls() { return this.signInForm.controls }
+
+  toggleVisibility(){
+    this.visibility = !this.visibility
+  }
+
 
 }

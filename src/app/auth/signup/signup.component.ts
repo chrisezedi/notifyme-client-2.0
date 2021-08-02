@@ -11,6 +11,7 @@ import { AuthService } from '../auth.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignupComponent implements OnInit {
+  visibility:boolean = false;
   signupForm = new FormGroup({
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
@@ -32,9 +33,12 @@ export class SignupComponent implements OnInit {
       if(error.status == 500) {
         this.sharedService.showSnackbar("something went wrong")
       }else{
-        console.log(error)
         this.sharedService.showSnackbar(error.error.msg)
       }
     })
+  }
+
+  toggleVisibility(){
+    this.visibility = !this.visibility
   }
 }

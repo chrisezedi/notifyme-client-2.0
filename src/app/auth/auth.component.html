@@ -15,7 +15,8 @@
 
                 <mat-form-field appearance="outline">
                     <mat-label>Enter Your Password</mat-label>
-                        <input type="password" matInput formControlName="password">
+                        <input [type]="visibility ? 'text' : 'password' " matInput formControlName="password">
+                        <mat-icon matSuffix style="cursor: pointer;" (click)="toggleVisibility()">{{visibility ? 'visibility' : 'visibility_off'}}</mat-icon>
                         <mat-error *ngIf="signInFormControls.password.errors?.required">Your Password is required!</mat-error>
                 </mat-form-field>
                 <a id="passwordReset" mat-button color="primary" routerLink="/forgot_password">forgot your password?</a>

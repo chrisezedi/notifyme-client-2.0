@@ -1,25 +1,37 @@
-#app{
+#navigation{
+    height: 100%;
     display: flex;
-    justify-content: center;
-    padding: 20px 10px;
-
-    #app-container{
-        width: 50%;
-    }
+    flex-direction: column;
 }
 
-mat-sidenav{
+#main-content-wrapper{
+    display: flex;
+    height: 100%;
+}
+
+#main-content{
+    flex-grow: 1;
+    margin-top: 40px;
+}
+
+#sidebar{
+    position: fixed;
+    height: 100%;
+    z-index: 1;
+}
+
+.open{
+    display:block;
+}
+
+.close{
+    display: none;
+}
+
+.sidebarSmWidth{
+    width:60%
+}
+
+.sidebarLgWidth{
     width: 20%;
-}
-
-@media (max-width: 600px){
-    #app{        
-        #app-container{
-            width: 100%;
-        }
-    }
-
-    mat-sidenav{
-        width: 55%;
-    }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../shared/types/user';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../../environments/environment'
 
 @Injectable({
@@ -10,6 +10,7 @@ import { environment } from '../../environments/environment'
 export class AuthService {
   private apiUrl:string = environment.apiUrl;
   private token:string | null = null;
+  isAuthStatus:Subject<boolean> = new Subject();
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -24,10 +25,23 @@ export class AuthService {
     return this.http.get(`${this.apiUrl}/users/access_token`,this.httpOptions)
   }
 
-  //log in user
+  //store token
   storeToken(token:string){
     this.token = token;
+    this.isAuthStatus.next(true);
+    setTimeout(() => {
+      this.checkAuth().subscribe((response)=>{
+        if(response.success){
+          this.storeToken(response.token);
+        }
+      })
+    }, 210000);
     return true;
+  }
+
+  //get token
+  getToken(){
+    return this.token;
   }
 
   //register new user
@@ -48,5 +62,10 @@ export class AuthService {
   //login user
   login(user:{email:string,password:string}):Observable<any>{
     return this.http.post(`${this.apiUrl}/users/login`,user,this.httpOptions);
+  }
+
+  //logout user
+  logout():Observable<any>{
+    return this.http.post(`${this.apiUrl}/users/logout`,null,this.httpOptions);
   }
 }
