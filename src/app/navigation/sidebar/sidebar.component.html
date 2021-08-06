@@ -1,8 +1,8 @@
 <aside class="shadow-sm" [ngClass]="darkModeStyle ? 'dark-mode' : 'light-mode' ">
-    <mat-list *ngIf="isAuth else notAuth">
+    <mat-list *ngIf="isAuth">
         <mat-list-item>
             <mat-icon class="m-icon" matListIcon>local_activity</mat-icon>
-            <a matLine [ngStyle]="darkModeStyle ? {'color':'#fff'} : {'color':'black'}" routerLink="home/my-channels" (click)="onCloseSidebar()">My channels</a>
+            <a matLine [ngStyle]="darkModeStyle ? {'color':'#fff'} : {'color':'black'}" routerLink="my-channels" (click)="onCloseSidebar()">My channels</a>
         </mat-list-item>
 
         <mat-list-item>
@@ -25,17 +25,15 @@
         </mat-list-item>
         </mat-list>
 
-        <ng-template #notAuth>
-            <mat-list>
-                <mat-list-item>
-                    <mat-icon class="m-icon" matListIcon>door_front</mat-icon>
-                    <a matLine [ngStyle]="darkModeStyle ? {'color':'#fff'} : {'color':'black'}" routerLink="/auth/signup" (click)="onCloseSidebar()" style="cursor: pointer;">Signup</a> 
-                </mat-list-item>
-                
-                <mat-list-item>
-                    <mat-icon class="m-icon" matListIcon>login</mat-icon>
-                    <a matLine [ngStyle]="darkModeStyle ? {'color':'#fff'} : {'color':'black'}" routerLink="/auth" (click)="onCloseSidebar()" style="cursor: pointer;">Signin</a> 
-                </mat-list-item>
-            </mat-list>
-        </ng-template>
+        <mat-list *ngIf="!isAuth">
+            <mat-list-item>
+                <mat-icon class="m-icon" matListIcon>door_front</mat-icon>
+                <a matLine [ngStyle]="darkModeStyle ? {'color':'#fff'} : {'color':'black'}" routerLink="/auth/signup" (click)="onCloseSidebar()" style="cursor: pointer;">Signup</a> 
+            </mat-list-item>
+            
+            <mat-list-item>
+                <mat-icon class="m-icon" matListIcon>login</mat-icon>
+                <a matLine [ngStyle]="darkModeStyle ? {'color':'#fff'} : {'color':'black'}" routerLink="/auth" (click)="onCloseSidebar()" style="cursor: pointer;">Signin</a> 
+            </mat-list-item>
+        </mat-list>
 </aside>

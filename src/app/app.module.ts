@@ -20,15 +20,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
+
 import { TokenInterceptor } from './shared/token.interceptor';
 import { StoreModule } from '@ngrx/store';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { CustomDialogComponent } from './custom-dialog/custom-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     ToolbarComponent,
-    LoaderComponent
+    LoaderComponent,
+    NotfoundComponent,
+    CustomDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +49,7 @@ import { StoreModule } from '@ngrx/store';
     MatProgressBarModule,
     MatSnackBarModule,
     MatSlideToggleModule,
+    MatDialogModule,
     StoreModule.forRoot({}, {})
   ],
   providers: [LoaderService,{ provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi:true}],

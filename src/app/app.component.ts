@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { LoaderService } from './shared/loader.service';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
+import { BreakpointObserver } from '@angular/cdk/layout'
 import { MainService } from './main/main.service';
 
 @Component({
@@ -22,14 +22,11 @@ export class AppComponent implements OnInit{
 
     this.observer.observe(['(min-width:768px)']).subscribe((screen)=>{
       if(screen.matches){
-        console.log("Big screen")
         this.smallScreen = false;
         this.openSidebar = true;
       }else{
         this.smallScreen = true;
-        this.openSidebar = false;
-        console.log("SMall screen")
-       
+        this.openSidebar = false;       
       }
     })
   }

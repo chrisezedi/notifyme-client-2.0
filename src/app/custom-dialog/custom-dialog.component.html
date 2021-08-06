@@ -1,0 +1,15 @@
+<div id="dialog" *ngIf="passedData.type === 'deleteChannel'">
+    <h3 mat-dialog-title >You are about to delete {{passedData.name}}</h3>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close = "true" >Delete</button>
+        <button mat-button mat-dialog-close = "false" >Cancel</button>
+    </mat-dialog-actions>
+</div>
+
+<div id="dialog" *ngIf="passedData.type !== 'deleteChannel'">
+    <h3 mat-dialog-title >You are about to do something else {{passedData.name}}</h3>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close = "true" >something else</button>
+        <button mat-button mat-dialog-close = "false" >Cancel</button>
+    </mat-dialog-actions>
+</div>

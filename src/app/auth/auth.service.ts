@@ -44,6 +44,22 @@ export class AuthService {
     return this.token;
   }
 
+  //decode token
+  decodeToken(){
+    let token = this.getToken();
+    if(token !== null){
+      let decoded = JSON.parse(atob(token.split('.')[1]));
+      return decoded;
+    }
+  }
+
+  isAdmin(id?:string){
+    if (id !== this.decodeToken().id) {
+      return false;
+    }
+    return true
+  }
+
   //register new user
   signup(user:User):Observable<any>{
     return this.http.post(`${this.apiUrl}/users`,user,this.httpOptions);

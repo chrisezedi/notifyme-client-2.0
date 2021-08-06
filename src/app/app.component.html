@@ -6,8 +6,10 @@
         [ngClass]="(smallScreen && openSidebar) ? 'open sidebarSmWidth' : (smallScreen && !openSidebar) ? 'close' : (!smallScreen && openSidebar) ? 'open sidebarLgWidth' : (!smallScreen && !openSidebar) ? 'close' :'' ">
             <app-sidebar (closeSidebar)="toggleSidebar()"></app-sidebar>
         </div>
-        <div id="main-content">
-            <router-outlet ></router-outlet>
+        <div id="main-content" [ngStyle]="!smallScreen ? {'padding-left':'20%'} : {} ">
+            <div id="router-outlet" [ngStyle]="!smallScreen ? {'width':'500px'} : {}">
+                <router-outlet ></router-outlet>
+            </div>
         </div>
     </div>
 </section>

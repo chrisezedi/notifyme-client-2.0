@@ -1,0 +1,30 @@
+<section id="edit">
+    <mat-card *ngIf="channel">
+        <mat-card-header>
+            <small>Edit {{channel.name}}</small>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="editChannelForm" (ngSubmit)="submit()">
+                <mat-form-field appearance="outline" class="full-width">
+                    <input type="text" matInput formControlName="name" [placeholder]="channel.name">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <textarea formControlName="description" matInput cdkTextareaAutosize style="padding: 20px 10px; height: 0px" [placeholder]="channel.description"></textarea>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-select [placeholder]="channel.category" formControlName="category" matInput>
+                      <mat-option
+                        [value]="category.name"
+                        *ngFor="let category of categories"
+                        >{{ category.name }}</mat-option
+                      >
+                    </mat-select>
+                  </mat-form-field>
+
+                <button class="full-width" mat-raised-button color="primary" type="submit" [disabled]="editChannelForm.touched && editChannelForm.invalid">Update Channel</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</section>

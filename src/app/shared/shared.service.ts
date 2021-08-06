@@ -9,6 +9,8 @@ export class SharedService {
   constructor(private snackbar:MatSnackBar) {  }
 
   showSnackbar(msg:string){
-    this.snackbar.open(msg,"DISMISS")
+    this.snackbar.open(msg,"DISMISS",{
+      panelClass:'center-snackbar'
+    })
   }
 }

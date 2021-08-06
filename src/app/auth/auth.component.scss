@@ -4,16 +4,16 @@
 }
 
 mat-card{
-    min-width: 300px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     mat-card-content{
-        // width: 100%;
-        width: 250px;
-        margin: auto;
-
+        mat-card-header{
+            display: flex;
+            justify-content: center;
+        }
         mat-form-field{
             width: 100%;
         }

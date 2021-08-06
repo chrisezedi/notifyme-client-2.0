@@ -1,0 +1,28 @@
+<section id="my-channels">
+    <mat-card *ngIf="channels?.length === 0; else elseBlock">
+        <mat-card-header>
+            <small>Your Channels</small>
+        </mat-card-header>
+        <mat-card-content>
+            <div id="noChannel">
+                <h1>No Channels Yet</h1>
+                <button mat-raised-button mat-fab color="primary" routerLink="/my-channels/create">    
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <ng-template #elseBlock>
+        <mat-card *ngFor="let channel of channels" [routerLink]="'/channel/'+channel._id" class="cursor">
+            <mat-card-content>
+                <div id="channel">
+                    <img mat-card-avatar [src]="channel?.imgurl" alt="channel name"/>
+                    <div fxLayout="column">
+                        <h1 style="margin-bottom: 0px; white-space: wrap">{{ channel?.name }}</h1>
+                        <small>Members : {{ channel?.subscribers?.length }}</small>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </ng-template>
+</section>
